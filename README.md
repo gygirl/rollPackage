@@ -1,15 +1,15 @@
 ### 步骤
 
-* Fork 代码仓库并拉到本地
 * 安装依赖
-* 基于/src/components/HelloWorld.vue中实现一个简单的标签中spm信息收集
-* spm参考资料：https://www.biaodianfu.com/spm.html
-
 ```
 npm install
 ```
-* 启动测试
+* 要求输入npm包名，纯浏览器分析出该包的所有依赖
+* 请求axios、展示echarts
+
+
+* 启动
 
 ```
-npm test
+npm run serve
 ```
