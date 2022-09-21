@@ -10,33 +10,37 @@ export default {
      data(){return {};},
      watch:{
          message(data){
+            console.log("我收到了="+data);
+            if(JSON.stringify(data) === '{}'){
+            alert('未查询到结果');
+            }else{
             this.drawLine(data);
+            }
          },
          loading(data){
-            if(data)
+           if(data){
            myChart.showLoading();
-           else
+           }
+           else{
            myChart.hideLoading();
+           }
          }
      },
      mounted(){
-  myChart = echarts.init(document.getElementById("LBChart"));
+         myChart = echarts.init(document.getElementById("LBChart"));
      },
      methods:{
-      drawLine(ownchildmsg){
-        console.log("我收到了="+ownchildmsg);
-        console.log(typeof ownchildmsg);
-        myChart.hideLoading();
+         drawLine(ownchildmsg){
         // 基于准备好的dom，初始化echarts实例
-       myChart.setOption({
-       tooltip: {
-       trigger: 'item',
-       triggerOn: 'mousemove'
+         myChart.setOption({
+         tooltip: {
+         trigger: 'item',
+         triggerOn: 'mousemove'
       },
-      series: [
-        {
+         series: [
+         {
             type: 'tree',
-            data: [ownchildmsg?JSON.parse(ownchildmsg):''],
+            data: [JSON.parse(ownchildmsg)],
              top: '1%',
              left: '7%',
              bottom: '1%',
@@ -61,7 +65,7 @@ export default {
             expandAndCollapse: true,
             animationDuration: 550,
             animationDurationUpdate: 750
-        }
+         }
     ]
 })
 }

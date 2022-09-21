@@ -9,7 +9,7 @@
 <script>
 import _ from 'lodash';
 export default {
-  name: "HelloWorld",  
+  name: "QueryNpm",  
   data() {
     return {
       npmValue: "",
@@ -54,7 +54,8 @@ export default {
         }
         }).catch((err) => {
           console.log("错误"+err);
-          emit('sendPackagesTree'); 
+          emit('sendPackagesTree',result); 
+          emit('sendLoading',0);
         });
       }
       iterate(this.axios,this.$emit)
@@ -77,28 +78,6 @@ function checkVersion(tempVersion){
   }
 return version;
 }
-// function changeToTree(data){
-//   let result={};
-//    if(!Array.isArray(data)){
-//      return result;
-//    }
-//    if(!data.length){
-//      return result;
-//    }
-//    let map={};
-//    data.forEach(item=>{
-//     map[item.id]=item;
-//    });
-//    data.forEach(item=>{
-//     let parent=map[item.parent];
-//     if(parent){
-//       (parent.children||(parent.children=[])).push(item);
-//     }else{
-//       result=item;
-//     }
-//    });
-//    return result;
-// }
 
 
 </script>
